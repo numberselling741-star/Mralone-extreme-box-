@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mr Alone Gift Box</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(#111,#300);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:sans-serif;
+    color:white;
+    overflow:hidden;
+}
+
+.container{text-align:center;}
+
+.box{
+    width:150px;
+    height:120px;
+    background:#e91e63;
+    margin:auto;
+    position:relative;
+    cursor:pointer;
+    transform-style:preserve-3d;
+    transition:1s;
+    box-shadow:0 0 30px pink;
+}
+
+.box:before{
+    content:"";
+    position:absolute;
+    width:35px;
+    height:120px;
+    background:#ffd700;
+    left:58px;
+}
+
+.lid{
+    width:170px;
+    height:30px;
+    background:#ff4081;
+    position:absolute;
+    top:-30px;
+    left:-10px;
+    transition:1s;
+}
+
+.open .lid{
+    transform:translateY(-80px) rotate(-20deg);
+}
+
+h1{
+    color:#ff80ab;
+}
+
+button{
+    padding:12px;
+    margin:5px;
+    border:none;
+    border-radius:20px;
+    background:#ff4081;
+    color:white;
+    font-size:15px;
+}
+
+button:hover{
+    background:red;
+}
+
+.heart{
+    position:absolute;
+    color:red;
+    font-size:25px;
+    animation:float 4s infinite;
+}
+
+@keyframes float{
+    from{transform:translateY(100vh);}
+    to{transform:translateY(-100vh);}
+}
+
+.fire{
+    position:absolute;
+    font-size:30px;
+    animation:boom 2s infinite;
+}
+
+@keyframes boom{
+    0%{transform:scale(0);}
+    100%{transform:scale(2);opacity:0;}
+}
+
+.msg{
+    display:none;
+    background:#222;
+    padding:20px;
+    border-radius:15px;
+    margin-top:20px;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="box" onclick="openBox()">
+<div class="lid"></div>
+</div>
+
+<h1>🎁 3D Gift Box</h1>
+
+<button onclick="show('love')">❤️ I Love You</button>
+<button onclick="show('miss')">🥺 I Miss You</button>
+<button onclick="show('like')">😊 I Like You</button>
+
+<div class="msg" id="msg"></div>
+
+<h3>👑 Owner: Mr Alone</h3>
+<h4>🖤 Shareef Larka</h4>
+<p>✨ Powered By Mr Alone</p>
+
+</div>
+
+
+<script>
+
+function openBox(){
+document.querySelector(".box").classList.add("open");
+
+for(let i=0;i<15;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"%";
+document.body.appendChild(h);
+}
+}
+
+function show(type){
+
+let m=document.getElementById("msg");
+m.style.display="block";
+
+if(type=="love")
+m.innerHTML="❤️ میری زندگی کی سب سے خوبصورت وجہ تم ہو، تمہاری مسکراہٹ میرے دل کی خوشی ہے۔ ہمیشہ خوش رہو۔";
+
+if(type=="miss")
+m.innerHTML="🥺 تم دور ہو لیکن دل کے بہت قریب ہو، ہر لمحہ تمہاری یاد آتی ہے۔";
+
+if(type=="like")
+m.innerHTML="😊 تمہاری باتوں میں ایک الگ خوبصورتی ہے، تم خاص ہو۔";
+
+for(let i=0;i<10;i++){
+let f=document.createElement("div");
+f.className="fire";
+f.innerHTML="🎆";
+f.style.left=Math.random()*90+"%";
+f.style.top=Math.random()*80+"%";
+document.body.appendChild(f);
+}
+
+}
+
+</script>
+
+</body>
+</html>
